@@ -26,16 +26,27 @@ const LoginForm = () => {
       setShow("ERROR");
     }
   };
+  // min length pass 16 
   const conditionPass = () => {
-    if (d?.Password.length <= 8) {
+    if (d?.Password.length >= 8) {
       setPass("Pass is OK");
     } else {
       setPass("Pass is not ok");
     }
   };
+// max length pass 16 
+  const handlePass =(e)=> {
+    const val=e.target.value
+      if (val?.length <= 16) {
+        hc("Password")(e)
+      }
+    
+  }
+  
   const finalFunc = () => {
     condition();
     conditionPass();
+    
   };
 
   //   console.log(d.Password);
@@ -46,7 +57,7 @@ const LoginForm = () => {
 
       <input
         value={d?.Password}
-        onChange={hc("Password")}
+        onChange={handlePass}
         className="lastChild"
         type="text"
       />
@@ -59,3 +70,6 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
+
